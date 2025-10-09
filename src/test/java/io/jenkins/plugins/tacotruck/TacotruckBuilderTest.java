@@ -2,31 +2,39 @@ package io.jenkins.plugins.tacotruck;
 
 import hudson.model.FreeStyleBuild;
 import hudson.model.FreeStyleProject;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.jvnet.hudson.test.JenkinsRule;
 import org.jvnet.hudson.test.junit.jupiter.WithJenkins;
 
 @WithJenkins
 class TacotruckBuilderTest {
 
-    final String runName = "Test Tacotruck Run";
-    final String apiUrl = "https://staging.api.testifesta.com";
-    final String handle = "testorg";
-    final String provider = "provider";
-    final String projectKey = "project";
-    final String credentialsId = "credentialsId";
-    final String resultsPath = "./results.xml";
+    private static final String RUN_NAME = "Test Tacotruck Run";
+    private static final String API_URL = "https://staging.api.testifesta.com";
+    private static final String HANDLE = "testorg";
+    private static final String PROVIDER = "provider";
+    private static final String PROJECT_KEY = "project";
+    private static final String CREDENTIALS_ID = "credentialsId";
+    private static final String RESULTS_PATH = "./results.xml";
+
+    private JenkinsRule jenkins;
+
+    @BeforeEach
+    void beforeEach(JenkinsRule rule) {
+        jenkins = rule;
+    }
 
     @Test
-    @Disabled
-    void testBuild(JenkinsRule jenkins) throws Exception {
+    @Disabled("Needs local installation of TacoTruck CLI")
+    void testBuild() throws Exception {
         FreeStyleProject project = jenkins.createFreeStyleProject();
         TacotruckBuilder builder =
-                new TacotruckBuilder(runName, apiUrl, provider, handle, projectKey, credentialsId, resultsPath);
+                new TacotruckBuilder(RUN_NAME, API_URL, PROVIDER, HANDLE, PROJECT_KEY, CREDENTIALS_ID, RESULTS_PATH);
         project.getBuildersList().add(builder);
 
         FreeStyleBuild build = jenkins.buildAndAssertSuccess(project);
-        jenkins.assertLogContains(runName, build);
+        jenkins.assertLogContains(RUN_NAME, build);
     }
 }
