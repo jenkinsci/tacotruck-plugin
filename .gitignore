@@ -17,5 +17,6 @@ work
 build
 bin
 .DS_Store
-.vscode/
 .idea/*
+config.bat
+node_modules
