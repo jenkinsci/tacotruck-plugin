@@ -1,20 +1,11 @@
 # TacoTruck Jenkins Plugin
+[![GitHub release](https://img.shields.io/github/release/jenkinsci/tacotruck-plugin.svg?label=changelog)](https://github.com/jenkinsci/tacotruck-plugin/releases/latest)
+[![Jenkins Security Scan](https://github.com/jenkinsci/tacotruck-plugin/actions/workflows/jenkins-security-scan.yml/badge.svg)](https://github.com/jenkinsci/tacotruck-plugin/actions/workflows/jenkins-security-scan.yml)
+[![License](https://img.shields.io/github/license/jenkinsci/tacotruck-plugin)](https://github.com/jenkinsci/tacotruck-plugin/blob/master/LICENSE)
 
-A Jenkins plugin that provides build step integration with TacoTruck
 
-## Installation
+A Jenkins plugin that provides build step integration with [TacoTruck](https://github.com/testfiesta/tacotruck)
 
-### From Jenkins Plugin Manager
-
-1. Go to **Manage Jenkins** → **Manage Plugins**
-2. Search for "TacoTruck" in the Available tab
-3. Install the plugin and restart Jenkins
-
-### Manual Installation
-
-1. Download the latest `.hpi` file from the [releases page](https://github.com/jenkinsci/tacotruck-plugin/releases)
-2. Go to **Manage Jenkins** → **Manage Plugins** → **Advanced**
-3. Upload the `.hpi` file and restart Jenkins
 
 ## Configuration
 
