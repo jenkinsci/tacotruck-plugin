@@ -123,7 +123,8 @@ public class TacotruckCLIHelper {
             String handle,
             String runName,
             String baseUrl,
-            String npxPath) {
+            String npxPath,
+            String source) {
         List<String> cmd = new ArrayList<>();
 
         cmd.add(npxPath);
@@ -144,6 +145,11 @@ public class TacotruckCLIHelper {
         cmd.add("--url");
         cmd.add(baseUrl);
 
+        if (source != null && !source.isBlank()) {
+            cmd.add("--source");
+            cmd.add(source);
+        }
+
         return cmd.toArray(new String[0]);
     }
 
@@ -155,6 +161,7 @@ public class TacotruckCLIHelper {
             String handle,
             String runName,
             String baseUrl,
+            String source,
             Launcher launcher,
             TaskListener listener,
             FilePath workspace,
@@ -165,7 +172,7 @@ public class TacotruckCLIHelper {
 
         String npxPath = findNpxPath(launcher, listener, workspace, envVars);
         String[] command =
-                buildSubmitCommand(provider, resultsPath, project, apiToken, handle, runName, baseUrl, npxPath);
+                buildSubmitCommand(provider, resultsPath, project, apiToken, handle, runName, baseUrl, npxPath, source);
 
         StringBuilder logCmd = new StringBuilder();
         for (int i = 0; i < command.length; i++) {
@@ -208,6 +215,7 @@ public class TacotruckCLIHelper {
             String handle,
             String runName,
             String baseUrl,
+            String source,
             Launcher launcher,
             TaskListener listener,
             FilePath workspace,
@@ -229,6 +237,7 @@ public class TacotruckCLIHelper {
                 handle,
                 runName,
                 baseUrl,
+                source,
                 launcher,
                 listener,
                 workspace,

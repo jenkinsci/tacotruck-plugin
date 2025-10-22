@@ -34,4 +34,8 @@
   <f:textbox />
  </f:entry>
 
+<f:entry title="${%Source}" field="source">
+    <f:textbox />
+</f:entry>
+
 </j:jelly>

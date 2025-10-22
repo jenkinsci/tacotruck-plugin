@@ -31,6 +31,7 @@ public class TacotruckBuilder extends Builder implements SimpleBuildStep {
     private final String credentialsId;
     private final String provider;
     private final String resultsPath;
+    private final String source;
 
     @DataBoundConstructor
     public TacotruckBuilder(
@@ -40,7 +41,8 @@ public class TacotruckBuilder extends Builder implements SimpleBuildStep {
             String handle,
             String project,
             String credentialsId,
-            String resultsPath) {
+            String resultsPath,
+            String source) {
         this.runName = runName;
         this.apiUrl = apiUrl;
         this.provider = provider;
@@ -48,6 +50,7 @@ public class TacotruckBuilder extends Builder implements SimpleBuildStep {
         this.project = project;
         this.credentialsId = credentialsId;
         this.resultsPath = resultsPath;
+        this.source = source;
     }
 
     public String getRunName() {
@@ -78,6 +81,10 @@ public class TacotruckBuilder extends Builder implements SimpleBuildStep {
         return resultsPath;
     }
 
+    public String getSource() {
+        return source;
+    }
+
     @Override
     public void perform(Run<?, ?> run, FilePath workspace, EnvVars env, Launcher launcher, TaskListener listener)
             throws InterruptedException, IOException {
@@ -98,6 +105,7 @@ public class TacotruckBuilder extends Builder implements SimpleBuildStep {
                     this.getHandle(),
                     this.getRunName(),
                     this.getApiUrl(),
+                    this.getSource(),
                     launcher,
                     listener,
                     workspace,

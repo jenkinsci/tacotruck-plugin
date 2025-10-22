@@ -30,8 +30,8 @@ class TacotruckBuilderTest {
     @Disabled("Needs local installation of TacoTruck CLI")
     void testBuild() throws Exception {
         FreeStyleProject project = jenkins.createFreeStyleProject();
-        TacotruckBuilder builder =
-                new TacotruckBuilder(RUN_NAME, API_URL, PROVIDER, HANDLE, PROJECT_KEY, CREDENTIALS_ID, RESULTS_PATH);
+        TacotruckBuilder builder = new TacotruckBuilder(
+                RUN_NAME, API_URL, PROVIDER, HANDLE, PROJECT_KEY, CREDENTIALS_ID, RESULTS_PATH, null);
         project.getBuildersList().add(builder);
 
         FreeStyleBuild build = jenkins.buildAndAssertSuccess(project);
