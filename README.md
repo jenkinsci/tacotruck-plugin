@@ -26,6 +26,7 @@ Currently, no global configuration is required for this plugin.
    - **Credentials**: Select appropriate credentials from the dropdown
    - **Results Path**: Path to the test results file
    - **Handle**: username or organization handle
+   - **Source**: (Optional) Source identifier for the test results
 
 #### Pipeline Jobs
 
@@ -45,7 +46,8 @@ pipeline {
                         handle: 'TestHandle',
                         project: 'testProjectKey',
                         credentialsId: 'YOUR_CREDENTIALS_ID',
-                        resultsPath: './test-results.xml'
+                        resultsPath: './test-results.xml',
+                        source: 'jenkins-ci'  // Optional: source identifier
                     )
             }
         }
